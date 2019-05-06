@@ -12,12 +12,15 @@ class DetailSurah extends StatefulWidget {
 }
 
 class _DetailSurahState extends State<DetailSurah> {
+  var tafsir;
   Future loadSurah() async {
     final response = await rootBundle.loadString('surah/${widget.index}.json');
     if (response != null) {
       var data = json.decode(response);
       var surah = data['${widget.index}'];
-      print(surah);
+      setState(() {
+        tafsir = surah['tafsir']['id']['kemenag']['text'];
+      });
       return surah;
     }
   }
@@ -25,7 +28,22 @@ class _DetailSurahState extends State<DetailSurah> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.detail)),
+      appBar: AppBar(
+        title: Text(widget.detail),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.receipt),
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Tafsir(
+                            tafsir: tafsir,
+                          )));
+            },
+          )
+        ],
+      ),
       // body: Text('data'),
       body: FutureBuilder(
         future: loadSurah(),
@@ -53,19 +71,42 @@ class _DetailSurahState extends State<DetailSurah> {
                         ),
                       ),
                     );
-                  },
-                )
+                  })
               : Center(
                   child: CircularProgressIndicator(),
                 );
         },
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: null,
-        label: Text('Next'),
-        icon: Icon(Icons.keyboard_arrow_right),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      // floatingActionButton: FloatingActionButton.extended(
+      //   onPressed: null,
+      //   label: Text('Next'),
+      //   icon: Icon(Icons.keyboard_arrow_right),
+      // ),
     );
+  }
+}
+
+class Tafsir extends StatelessWidget {
+  final tafsir;
+  Tafsir({Key key, this.tafsir}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('Tafsir'),
+        ),
+        body: ListView.builder(
+          itemCount: tafsir.length,
+          itemBuilder: (BuildContext c, int i) {
+            String key = tafsir.keys.elementAt(i);
+            return Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: ListTile(
+                title: Text(tafsir[key]),
+              ),
+            );
+          },
+        ));
   }
 }
