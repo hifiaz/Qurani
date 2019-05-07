@@ -1,15 +1,34 @@
+![alt text](images/icon.png "Logo Title Text 1")
+
 # Alqurani
 
-This part of #30DaysRamadhanCode
+This app has release in google play, free [Google Play]('https://play.google.com/store/apps/details?id=id.duende.alqurani&hl=en')
 
+# Features
 
-This project is a starting point for a Flutter application.
+- List of Surah
+- Translate of surah
+- Tafsir of surah
+- List of daily du'a
 
-Day 1
-In this app i will make app for read quran, for first step i will show all surah from [alquran](https://github.com/rioastamal/quran-json)
+### Contribute
 
-Day 2
-Make Bottom bar for another menu
+You can contribute to this project, this made with flutter all resource is MIT license.
 
-Day 3
-Auto scroll request page for read quran
+requires :
+
+- [Flutter](https://flutter.dev/).
+
+Todo:
+
+- Asmaul husna
+- Highlight surah/ayah
+- Bookmark surah
+- Local notification
+- Prayer schedule
+- Kiblah
+
+### Resource
+
+- Surah [alquran](https://github.com/rioastamal/quran-json)
+- Du'a [doa](https://github.com/mazipan/quran-offline)
