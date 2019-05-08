@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:alqurani/detailasmaul.dart';
 import 'package:alqurani/detaildoa.dart';
 import 'package:alqurani/detailsurah.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +15,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Alqurani',
       theme: ThemeData(
-        primarySwatch: Colors.green,
-      ),
+          primarySwatch: Colors.green,
+          scaffoldBackgroundColor: Color(0xffeaf0fe)),
       home: MyHomePage(title: 'Alqurani'),
     );
   }
@@ -50,7 +51,70 @@ class _MyHomePageState extends State<MyHomePage> {
         physics: ScrollPhysics(),
         shrinkWrap: true,
         children: <Widget>[
-          new ListMenu(),
+          Container(
+            height: 80.0,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.all(10.0),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8.0),
+                      gradient: LinearGradient(colors: [
+                        Color(0xff338b93),
+                        Color(0xffb6f492),
+                      ])),
+                  width: 180,
+                  child: ListTile(
+                    title: Text(
+                      'Doa Harian',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    trailing: IconButton(
+                      icon: Icon(
+                        Icons.keyboard_arrow_right,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => DetailDoa()));
+                      },
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.all(10.0),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8.0),
+                      gradient: LinearGradient(colors: [
+                        Color(0xff338b93),
+                        Color(0xffb6f492),
+                      ])),
+                  width: 180,
+                  child: ListTile(
+                    title: Text(
+                      'Asmaul Husna',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    trailing: IconButton(
+                      icon: Icon(
+                        Icons.keyboard_arrow_right,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => DetailAsmaul()));
+                      },
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
           FutureBuilder(
             future: loadInfo(),
             builder: (c, snapshot) {
@@ -60,117 +124,125 @@ class _MyHomePageState extends State<MyHomePage> {
                       shrinkWrap: true,
                       itemCount: snapshot.data.length,
                       itemBuilder: (BuildContext c, int i) {
-                        return Card(
-                            elevation: 0.0,
-                            child: Container(
-                              padding: EdgeInsets.all(12.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  ListTile(
-                                    title: Padding(
-                                      padding:
-                                          const EdgeInsets.only(bottom: 8.0),
-                                      child: Text(
-                                        snapshot.data[i]['latin'],
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Card(
+                              elevation: 0.0,
+                              child: Container(
+                                padding: EdgeInsets.all(12.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    ListTile(
+                                      title: Padding(
+                                        padding:
+                                            const EdgeInsets.only(bottom: 8.0),
+                                        child: Text(
+                                          snapshot.data[i]['latin'],
+                                          style: TextStyle(
+                                              fontSize: 20.0,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                      subtitle: Text(
+                                        snapshot.data[i]['translation'],
                                         style: TextStyle(
-                                            fontSize: 20.0,
-                                            fontWeight: FontWeight.bold),
+                                            fontSize: 14.0,
+                                            color: Colors.green),
+                                      ),
+                                      trailing: IconButton(
+                                          icon:
+                                              Icon(Icons.keyboard_arrow_right),
+                                          onPressed: () {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        DetailSurah(
+                                                            detail:
+                                                                snapshot.data[i]
+                                                                    ['latin'],
+                                                            index: snapshot
+                                                                    .data[i]
+                                                                ['index'])));
+                                          }),
+                                    ),
+                                    SizedBox(
+                                      height: 8.0,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(12.0),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: <Widget>[
+                                          Column(
+                                            children: <Widget>[
+                                              Text(
+                                                'Surat Ke',
+                                                style: TextStyle(
+                                                    fontSize: 12.0,
+                                                    color: Colors.grey),
+                                              ),
+                                              SizedBox(
+                                                height: 5.0,
+                                              ),
+                                              Text(
+                                                snapshot.data[i]['index']
+                                                    .toString(),
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            ],
+                                          ),
+                                          Column(
+                                            children: <Widget>[
+                                              Text(
+                                                'Ayat',
+                                                style: TextStyle(
+                                                    fontSize: 12.0,
+                                                    color: Colors.grey),
+                                              ),
+                                              SizedBox(
+                                                height: 5.0,
+                                              ),
+                                              Text(
+                                                snapshot.data[i]['ayah_count']
+                                                    .toString(),
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            ],
+                                          ),
+                                          Column(
+                                            children: <Widget>[
+                                              Text(
+                                                'Arabic',
+                                                style: TextStyle(
+                                                    fontSize: 12.0,
+                                                    color: Colors.grey),
+                                              ),
+                                              SizedBox(
+                                                height: 5.0,
+                                              ),
+                                              Text(
+                                                snapshot.data[i]['arabic']
+                                                    .toString(),
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
                                       ),
                                     ),
-                                    subtitle: Text(
-                                      snapshot.data[i]['translation'],
-                                      style: TextStyle(
-                                          fontSize: 14.0, color: Colors.green),
-                                    ),
-                                    trailing: IconButton(
-                                        icon: Icon(Icons.keyboard_arrow_right),
-                                        onPressed: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      DetailSurah(
-                                                          detail:
-                                                              snapshot.data[i]
-                                                                  ['latin'],
-                                                          index: snapshot
-                                                                  .data[i]
-                                                              ['index'])));
-                                        }),
-                                  ),
-                                  SizedBox(
-                                    height: 8.0,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(12.0),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: <Widget>[
-                                        Column(
-                                          children: <Widget>[
-                                            Text(
-                                              'Surat Ke',
-                                              style: TextStyle(
-                                                  fontSize: 12.0,
-                                                  color: Colors.grey),
-                                            ),
-                                            SizedBox(
-                                              height: 5.0,
-                                            ),
-                                            Text(
-                                              snapshot.data[i]['index']
-                                                  .toString(),
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                          ],
-                                        ),
-                                        Column(
-                                          children: <Widget>[
-                                            Text(
-                                              'Ayat',
-                                              style: TextStyle(
-                                                  fontSize: 12.0,
-                                                  color: Colors.grey),
-                                            ),
-                                            SizedBox(
-                                              height: 5.0,
-                                            ),
-                                            Text(
-                                              snapshot.data[i]['ayah_count']
-                                                  .toString(),
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                          ],
-                                        ),
-                                        Column(
-                                          children: <Widget>[
-                                            Text(
-                                              'Arabic',
-                                              style: TextStyle(
-                                                  fontSize: 12.0,
-                                                  color: Colors.grey),
-                                            ),
-                                            SizedBox(
-                                              height: 5.0,
-                                            ),
-                                            Text(
-                                              snapshot.data[i]['arabic']
-                                                  .toString(),
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ));
+                                  ],
+                                ),
+                              )),
+                        );
                       },
                     )
                   : Container(
@@ -189,55 +261,6 @@ class _MyHomePageState extends State<MyHomePage> {
       //   BottomNavigationBarItem(
       //       icon: Icon(Icons.settings), title: Container(height: 0.0)),
       // ])
-    );
-  }
-}
-
-class ListMenu extends StatelessWidget {
-  const ListMenu({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 80.0,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Card(
-              elevation: 0.0,
-              child: Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8.0),
-                    gradient: LinearGradient(colors: [
-                      Color(0xff338b93),
-                      Color(0xffb6f492),
-                    ])),
-                width: 180,
-                child: ListTile(
-                  title: Text(
-                    'Doa Harian',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  trailing: IconButton(
-                    icon: Icon(
-                      Icons.keyboard_arrow_right,
-                      color: Colors.white,
-                    ),
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => DetailDoa()));
-                    },
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

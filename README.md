@@ -1,8 +1,8 @@
-![alt text](images/icon.png "Logo Title Text 1")
+![qurani](/images/icon.png "qurani")
 
 # Alqurani
 
-This app has release in google play, free [Google Play]('https://play.google.com/store/apps/details?id=id.duende.alqurani&hl=en')
+This app has release in google play, free [Google Play](https://play.google.com/store/apps/details?id=id.duende.alqurani&hl=en)
 
 # Features
 
