@@ -45,7 +45,7 @@ class _DetailDoaState extends State<DetailDoa> {
                             children: <Widget>[
                               Text(
                                 snapshot.data[i]['arabic'],
-                                style: TextStyle(fontSize: 24.0),
+                                style: TextStyle(fontSize: 24.0, height: 1.5),
                                 textAlign: TextAlign.end,
                               ),
                               SizedBox(

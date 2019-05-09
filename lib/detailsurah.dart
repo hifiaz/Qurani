@@ -50,6 +50,7 @@ class _DetailSurahState extends State<DetailSurah> {
         builder: (c, snapshot) {
           return snapshot.hasData
               ? ListView.builder(
+                physics: AlwaysScrollableScrollPhysics(),
                   itemCount: snapshot.data['text'].length,
                   itemBuilder: (BuildContext c, int i) {
                     String key = snapshot.data['text'].keys.elementAt(i);
@@ -60,7 +61,7 @@ class _DetailSurahState extends State<DetailSurah> {
                         title: Text(
                           snapshot.data['text'][key],
                           textAlign: TextAlign.end,
-                          style: TextStyle(fontSize: 24.0),
+                          style: TextStyle(fontSize: 24.0, height: 1.5),
                         ),
                         subtitle: Padding(
                           padding: const EdgeInsets.only(top: 20.0),
@@ -97,13 +98,14 @@ class Tafsir extends StatelessWidget {
           title: Text('Tafsir'),
         ),
         body: ListView.builder(
+          physics: AlwaysScrollableScrollPhysics(),
           itemCount: tafsir.length,
           itemBuilder: (BuildContext c, int i) {
             String key = tafsir.keys.elementAt(i);
             return Padding(
               padding: const EdgeInsets.only(top: 8.0),
               child: ListTile(
-                title: Text(tafsir[key]),
+                title: Text(tafsir[key], style: TextStyle(height: 1.2),),
               ),
             );
           },
