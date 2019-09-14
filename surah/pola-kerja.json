@@ -1,0 +1,135 @@
+{
+  "data": [
+    {
+      "1": {
+        "number": "105",
+        "name": "الفيل",
+        "name_latin": "Al-Fil",
+        "number_of_ayah": "5",
+        "text": {
+          "1": "اَلَمْ تَرَ كَيْفَ فَعَلَ رَبُّكَ بِاَصْحٰبِ الْفِيْلِۗ",
+          "2": "اَلَمْ يَجْعَلْ كَيْدَهُمْ فِيْ تَضْلِيْلٍۙ",
+          "3": "وَّاَرْسَلَ عَلَيْهِمْ طَيْرًا اَبَابِيْلَۙ",
+          "4": "تَرْمِيْهِمْ بِحِجَارَةٍ مِّنْ سِجِّيْلٍۙ",
+          "5": "فَجَعَلَهُمْ كَعَصْفٍ مَّأْكُوْلٍ ࣖ "
+        },
+        "translations": {
+          "id": {
+            "name": "Gajah",
+            "text": {
+              "1": "Tidakkah engkau (Muhammad) perhatikan bagaimana Tuhanmu telah bertindak terhadap pasukan bergajah?",
+              "2": "Bukankah Dia telah menjadikan tipu daya mereka itu sia-sia?",
+              "3": "dan Dia mengirimkan kepada mereka burung yang berbondong-bondong,",
+              "4": "yang melempari mereka dengan batu dari tanah liat yang dibakar,",
+              "5": "sehingga mereka dijadikan-Nya seperti daun-daun yang dimakan (ulat)."
+            }
+          }
+        }
+      },
+      "2": {
+        "number": "102",
+        "name": "التكاثر",
+        "name_latin": "At-Takasur",
+        "number_of_ayah": "8",
+        "text": {
+          "1": "اَلْهٰىكُمُ التَّكَاثُرُۙ",
+          "2": "حَتّٰى زُرْتُمُ الْمَقَابِرَۗ",
+          "3": "كَلَّا سَوْفَ تَعْلَمُوْنَۙ",
+          "4": "ثُمَّ كَلَّا سَوْفَ تَعْلَمُوْنَ ",
+          "5": "كَلَّا لَوْ تَعْلَمُوْنَ عِلْمَ الْيَقِيْنِۗ",
+          "6": "لَتَرَوُنَّ الْجَحِيْمَۙ",
+          "7": "ثُمَّ لَتَرَوُنَّهَا عَيْنَ الْيَقِيْنِۙ",
+          "8": "ثُمَّ لَتُسْـَٔلُنَّ يَوْمَىِٕذٍ عَنِ النَّعِيْمِ ࣖ"
+        },
+        "translations": {
+          "id": {
+            "name": "Bermegah-Megahan",
+            "text": {
+              "1": "Bermegah-megahan telah melalaikan kamu,",
+              "2": "sampai kamu masuk ke dalam kubur.",
+              "3": "Sekali-kali tidak! Kelak kamu akan mengetahui (akibat perbuatanmu itu),",
+              "4": "kemudian sekali-kali tidak! Kelak kamu akan mengetahui.",
+              "5": "Sekali-kali tidak! Sekiranya kamu mengetahui dengan pasti,",
+              "6": "niscaya kamu benar-benar akan melihat neraka Jahim,",
+              "7": "kemudian kamu benar-benar akan melihatnya dengan mata kepala sendiri,",
+              "8": "kemudian kamu benar-benar akan ditanya pada hari itu tentang kenikmatan (yang megah di dunia itu)."
+            }
+          }
+        }
+      },
+      "3": {
+        "number": "103",
+        "name": "العصر",
+        "name_latin": "Al-'Asr",
+        "number_of_ayah": "3",
+        "text": {
+          "1": "وَالْعَصْرِۙ",
+          "2": "اِنَّ الْاِنْسَانَ لَفِيْ خُسْرٍۙ",
+          "3": "اِلَّا الَّذِيْنَ اٰمَنُوْا وَعَمِلُوا الصّٰلِحٰتِ وَتَوَاصَوْا بِالْحَقِّ ەۙ وَتَوَاصَوْا بِالصَّبْرِ ࣖ"
+        },
+        "translations": {
+          "id": {
+            "name": "Asar",
+            "text": {
+              "1": "Demi masa,",
+              "2": "sungguh, manusia berada dalam kerugian,",
+              "3": "kecuali orang-orang yang beriman dan mengerjakan kebajikan serta saling menasihati untuk kebenaran dan saling menasihati untuk kesabaran."
+            }
+          }
+        },
+        "4": {
+          "number": "106",
+          "name": "قريش",
+          "name_latin": "Quraisy",
+          "number_of_ayah": "4",
+          "text": {
+            "1": "لِاِيْلٰفِ قُرَيْشٍۙ",
+            "2": "اٖلٰفِهِمْ رِحْلَةَ الشِّتَاۤءِ وَالصَّيْفِۚ",
+            "3": "فَلْيَعْبُدُوْا رَبَّ هٰذَا الْبَيْتِۙ",
+            "4": "الَّذِيْٓ اَطْعَمَهُمْ مِّنْ جُوْعٍ ەۙ وَّاٰمَنَهُمْ مِّنْ خَوْفٍ ࣖ"
+          },
+          "translations": {
+            "id": {
+              "name": "Quraisy",
+              "text": {
+                "1": "Karena kebiasaan orang-orang Quraisy,",
+                "2": "(yaitu) kebiasaan mereka bepergian pada musim dingin dan musim panas.",
+                "3": "Maka hendaklah mereka menyembah Tuhan (pemilik) rumah ini (Ka‘bah),",
+                "4": "yang telah memberi makanan kepada mereka untuk menghilangkan lapar dan mengamankan mereka dari rasa ketakutan."
+              }
+            }
+          }
+        },
+        "5": {
+          "number": "107",
+          "name": "الماعون",
+          "name_latin": "Al-Ma'un",
+          "number_of_ayah": "7",
+          "text": {
+            "1": "اَرَءَيْتَ الَّذِيْ يُكَذِّبُ بِالدِّيْنِۗ",
+            "2": "فَذٰلِكَ الَّذِيْ يَدُعُّ الْيَتِيْمَۙ",
+            "3": "وَلَا يَحُضُّ عَلٰى طَعَامِ الْمِسْكِيْنِۗ",
+            "4": "فَوَيْلٌ لِّلْمُصَلِّيْنَۙ",
+            "5": "الَّذِيْنَ هُمْ عَنْ صَلَاتِهِمْ سَاهُوْنَۙ",
+            "6": "الَّذِيْنَ هُمْ يُرَاۤءُوْنَۙ",
+            "7": "وَيَمْنَعُوْنَ الْمَاعُوْنَ ࣖ"
+          },
+          "translations": {
+            "id": {
+              "name": "Barang Yang Berguna",
+              "text": {
+                "1": "Tahukah kamu (orang) yang mendustakan agama?",
+                "2": "Maka itulah orang yang menghardik anak yatim,",
+                "3": "dan tidak mendorong memberi makan orang miskin.",
+                "4": "Maka celakalah orang yang salat,",
+                "5": "(yaitu) orang-orang yang lalai terhadap salatnya,",
+                "6": "yang berbuat ria,",
+                "7": "dan enggan (memberikan) bantuan."
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
