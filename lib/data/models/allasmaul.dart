@@ -5,29 +5,13 @@ AllAsmaul allAsmaulFromJson(String str) => AllAsmaul.fromJson(json.decode(str));
 String allAsmaulToJson(AllAsmaul data) => json.encode(data.toJson());
 
 class AllAsmaul {
-    List<Datum> data;
-
-    AllAsmaul({
-        this.data,
-    });
-
-    factory AllAsmaul.fromJson(Map<String, dynamic> json) => AllAsmaul(
-        data: json["data"] == null ? null : List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
-    );
-
-    Map<String, dynamic> toJson() => {
-        "data": data == null ? null : List<dynamic>.from(data.map((x) => x.toJson())),
-    };
-}
-
-class Datum {
     String index;
     String latin;
     String arabic;
     String translationId;
     String translationEn;
 
-    Datum({
+    AllAsmaul({
         this.index,
         this.latin,
         this.arabic,
@@ -35,7 +19,7 @@ class Datum {
         this.translationEn,
     });
 
-    factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+    factory AllAsmaul.fromJson(Map<String, dynamic> json) => AllAsmaul(
         index: json["index"] == null ? null : json["index"],
         latin: json["latin"] == null ? null : json["latin"],
         arabic: json["arabic"] == null ? null : json["arabic"],

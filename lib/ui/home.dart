@@ -1,15 +1,10 @@
-import 'package:alqurani/data/models/surahinfo.dart';
-import 'package:alqurani/data/services.dart';
 import 'package:alqurani/data/utils/data.dart';
 import 'package:alqurani/data/utils/style.dart';
 import 'package:alqurani/ui/about.dart';
-import 'package:alqurani/ui/detailsurah.dart';
+import 'package:alqurani/ui/listpage/ayatkursi.dart';
 import 'package:alqurani/ui/listpage/listalquran.dart';
 import 'package:alqurani/ui/listpage/listasmaul.dart';
 import 'package:alqurani/ui/listpage/listdoa.dart';
-import 'package:alqurani/ui/settings.dart';
-import 'package:alqurani/ui/widget/cardsurah.dart';
-import 'package:alqurani/ui/widget/listcard.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -23,7 +18,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(initialIndex: 0, length: 3, vsync: this);
+    _tabController = TabController(initialIndex: 0, length: 4, vsync: this);
   }
 
   @override
@@ -35,7 +30,6 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             return [
               SliverAppBar(
                 pinned: false,
-                backgroundColor: Colors.white,
                 actions: <Widget>[
                   IconButton(
                     icon: Icon(Icons.info_outline),
@@ -53,14 +47,15 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                       Container(
                         height: 60.0,
                         width: double.infinity,
-                        color: Colors.white,
                       ),
                       Padding(
                         padding: const EdgeInsets.all(20.0),
                         child: Text(
                           Static.appName,
                           style: TextStyle(
-                              fontSize: 24.0, fontWeight: FontWeight.w500),
+                              fontSize: 24.0,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white),
                         ),
                       ),
                     ],
@@ -70,8 +65,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                 bottom: TabBar(
                   controller: _tabController,
                   indicatorColor: Colors.transparent,
-                  labelColor: Colors.black,
-                  unselectedLabelColor: Colors.grey.withOpacity(0.6),
+                  labelColor: Colors.white,
+                  unselectedLabelColor: Colors.white.withOpacity(0.6),
                   labelPadding: EdgeInsets.symmetric(horizontal: 20.0),
                   isScrollable: true,
                   tabs: [
@@ -102,6 +97,15 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                         ),
                       ),
                     ),
+                    Tab(
+                      child: Text(
+                        'Ayat Kursi',
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               )
@@ -113,6 +117,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               ListAlquran(),
               ListDoa(),
               ListAsmaul(),
+              AyatKursi(),
             ],
           ),
         ));

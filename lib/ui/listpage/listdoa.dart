@@ -1,10 +1,8 @@
-import 'dart:convert';
-
 import 'package:alqurani/data/models/alldoa.dart';
 import 'package:alqurani/data/services.dart';
 import 'package:alqurani/data/uistate.dart';
+import 'package:alqurani/ui/widget/carddoa.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
 import 'package:pk_skeleton/pk_skeleton.dart';
 import 'package:provider/provider.dart';
 
@@ -14,15 +12,6 @@ class ListDoa extends StatefulWidget {
 }
 
 class _ListDoaState extends State<ListDoa> {
-  Future loadDoa() async {
-    var response = await rootBundle.loadString('surah/doa-harian.json');
-    if (response != null) {
-      var res = json.decode(response);
-      var data = res['data'];
-      return data;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     var ui = Provider.of<UiState>(context);
@@ -33,36 +22,12 @@ class _ListDoaState extends State<ListDoa> {
           return snapshot.hasData
               ? ListView(
                   children: snapshot.data
-                      .map((du) => Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 8.0),
-                            child: Card(
-                              elevation: 0.0,
-                              color: Colors.white,
-                              child: Container(
-                                padding: EdgeInsets.all(12),
-                                child: ListTile(
-                                  title: Text(du.title),
-                                  subtitle: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: <Widget>[
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 5.0, vertical: 10),
-                                        child: Text(
-                                          du.arabic,
-                                          textAlign: TextAlign.end,
-                                          style: TextStyle(
-                                              fontSize: ui.fontSize,
-                                              color: Colors.black),
-                                        ),
-                                      ),
-                                      if (ui.terjemahan) Text(du.translation),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
+                      .map((du) => CardDoa(
+                            title: du.title,
+                            arabic: du.arabic,
+                            fontarabic: ui.fontSize,
+                            terjemahan: ui.terjemahan,
+                            translate: du.translation,
                           ))
                       .toList(),
                 )

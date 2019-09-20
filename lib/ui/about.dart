@@ -1,4 +1,3 @@
-import 'package:alqurani/data/utils/style.dart';
 import 'package:flutter/material.dart';
 import 'package:package_info/package_info.dart';
 
@@ -18,9 +17,6 @@ class _AboutState extends State<About> {
         version = packageInfo.version;
         buildNumber = packageInfo.buildNumber;
       });
-      // String appName = packageInfo.appName;
-      // String packageName = packageInfo.packageName;
-      // String buildNumber = packageInfo.buildNumber;
     });
   }
 
@@ -32,7 +28,6 @@ class _AboutState extends State<About> {
           icon: Icon(Icons.keyboard_backspace),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        backgroundColor: Colors.white,
         title: Text('About'),
         elevation: 0.0,
       ),
