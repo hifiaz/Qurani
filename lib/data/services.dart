@@ -4,14 +4,17 @@ import 'package:alqurani/data/models/allasmaul.dart';
 import 'package:alqurani/data/models/alldoa.dart';
 import 'package:alqurani/data/models/allsurah.dart';
 import 'package:alqurani/data/models/ayatkursi.dart';
+import 'package:alqurani/data/models/jadwalsholat.dart';
 import 'package:alqurani/data/models/surahinfo.dart';
 import 'package:flutter/services.dart';
+import 'package:http/http.dart' as http;
 
 class ServiceData {
   var infosurah = 'surah/surah-info.json';
   var listdoa = 'surah/doa-harian.json';
   var listasmaulhusna = 'surah/asmaul-husna.json';
   var ayatkursi = 'surah/ayat-kursi.json';
+  var jadwalsholat = 'http://muslimsalat.com/';
 
   Future<List<SurahInfo>> loadInfo() async {
     var response = await rootBundle.loadString(infosurah);
@@ -45,5 +48,11 @@ class ServiceData {
     var res = json.decode(response);
     var data = res['data'];
     return AyathKursi.fromJson(data);
+  }
+
+  Future<JadwalDaily> loadJadwalSholat(String lokasi) async {
+    var response = await http.get('$jadwalsholat$lokasi/daily.json');
+    var res = json.decode(response.body);
+    return JadwalDaily.fromJson(res);
   }
 }

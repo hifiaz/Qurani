@@ -2,7 +2,6 @@ import 'package:alqurani/data/models/ayatkursi.dart';
 import 'package:alqurani/data/services.dart';
 import 'package:alqurani/data/uistate.dart';
 import 'package:alqurani/data/utils/style.dart';
-import 'package:alqurani/ui/widget/cardasmaul.dart';
 import 'package:flutter/material.dart';
 import 'package:pk_skeleton/pk_skeleton.dart';
 import 'package:provider/provider.dart';
@@ -23,6 +22,8 @@ class _AyatKursiState extends State<AyatKursi> {
             return Container(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: ListView(
+                physics: ScrollPhysics(),
+                shrinkWrap: true,
                 children: <Widget>[
                   Card(
                     child: Padding(

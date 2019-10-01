@@ -1,10 +1,7 @@
-import 'dart:convert';
-
 import 'package:alqurani/data/models/allasmaul.dart';
 import 'package:alqurani/data/services.dart';
 import 'package:alqurani/ui/widget/cardasmaul.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
 import 'package:pk_skeleton/pk_skeleton.dart';
 
 class ListAsmaul extends StatefulWidget {

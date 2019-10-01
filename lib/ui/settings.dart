@@ -1,3 +1,4 @@
+import 'package:alqurani/data/location.dart';
 import 'package:alqurani/data/themes.dart';
 import 'package:alqurani/data/uistate.dart';
 import 'package:alqurani/ui/widget/cardsetting.dart';
@@ -14,6 +15,7 @@ class _SettingsState extends State<Settings> {
   Widget build(BuildContext context) {
     var ui = Provider.of<UiState>(context);
     var dark = Provider.of<ThemeNotifier>(context);
+    var loc = Provider.of<LocationNotifier>(context);
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(
@@ -25,6 +27,14 @@ class _SettingsState extends State<Settings> {
         ),
         body: Column(
           children: <Widget>[
+            ListTile(
+              title: Text('Lokasi'),
+              subtitle: Text(loc.location),
+              trailing: IconButton(
+                icon: Icon(Icons.gps_fixed),
+                onPressed: () => loc.locationNow(),
+              ),
+            ),
             CardSetting(
               title: 'Tema Gelap',
               leading: Switch(
