@@ -17,7 +17,15 @@ class _CompassState extends State<Compass> {
   @override
   void initState() {
     super.initState();
-    _fetchPermissionStatus();
+    checkPermission();
+  }
+
+  void checkPermission() async {
+    if (await Permission.locationWhenInUse.isGranted) {
+      setState(() {
+        _hasPermissions = true;
+      });
+    }
   }
 
   @override
@@ -25,7 +33,7 @@ class _CompassState extends State<Compass> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('Flutter Compass'),
+        title: const Text('Arah Kiblat'),
       ),
       body: Builder(builder: (context) {
         if (_hasPermissions) {
@@ -66,7 +74,7 @@ class _CompassState extends State<Compass> {
                   style: Theme.of(context).textTheme.caption,
                 ),
                 Text(
-                  '$_lastReadAt',
+                  '${_lastReadAt ?? 'No Data'}',
                   style: Theme.of(context).textTheme.caption,
                 ),
               ],
@@ -121,39 +129,20 @@ class _CompassState extends State<Compass> {
             width: double.infinity,
             child: OutlineButton(
               child: Text('Request Permissions'),
-              onPressed: () {
-                PermissionHandler().requestPermissions(
-                    [PermissionGroup.locationWhenInUse]).then((ignored) {
-                  _fetchPermissionStatus();
+              onPressed: () async {
+                await Permission.locationWhenInUse
+                    .request()
+                    .isGranted
+                    .then((value) {
+                  setState(() {
+                    _hasPermissions = value;
+                  });
                 });
               },
             ),
           ),
-          SizedBox(height: 16),
-          SizedBox(
-            width: double.infinity,
-            child: OutlineButton(
-              child: Text('Open App Settings'),
-              onPressed: () {
-                PermissionHandler().openAppSettings().then((opened) {
-                  //
-                });
-              },
-            ),
-          ),
-          SizedBox(height: 16),
         ],
       ),
     );
-  }
-
-  void _fetchPermissionStatus() {
-    PermissionHandler()
-        .checkPermissionStatus(PermissionGroup.locationWhenInUse)
-        .then((status) {
-      if (mounted) {
-        setState(() => _hasPermissions = status == PermissionStatus.granted);
-      }
-    });
   }
 }
