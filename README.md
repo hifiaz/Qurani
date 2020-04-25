@@ -1,4 +1,4 @@
-![qurani](/images/icon.png "qurani")
+<img src="https://raw.githubusercontent.com/hifiaz/Qurani/master/images/Icon.png" width="250">
 
 # Alqurani
 
