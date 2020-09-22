@@ -14,7 +14,7 @@ class ServiceData {
   var listdoa = 'surah/doa-harian.json';
   var listasmaulhusna = 'surah/asmaul-husna.json';
   var ayatkursi = 'surah/ayat-kursi.json';
-  var jadwalsholat = 'http://muslimsalat.com/';
+  var jadwalsholat = 'https://api.pray.zone/v2/times/today.json?city=';
 
   Future<List<SurahInfo>> loadInfo() async {
     var response = await rootBundle.loadString(infosurah);
@@ -51,7 +51,7 @@ class ServiceData {
   }
 
   Future<JadwalDaily> loadJadwalSholat(String lokasi) async {
-    var response = await http.get('$jadwalsholat$lokasi/daily.json');
+    var response = await http.get('$jadwalsholat$lokasi');
     var res = json.decode(response.body);
     return JadwalDaily.fromJson(res);
   }

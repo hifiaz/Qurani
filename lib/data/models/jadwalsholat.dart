@@ -9,169 +9,221 @@ JadwalDaily jadwalDailyFromJson(String str) => JadwalDaily.fromJson(json.decode(
 String jadwalDailyToJson(JadwalDaily data) => json.encode(data.toJson());
 
 class JadwalDaily {
-    String title;
-    String query;
-    String jadwalDailyFor;
-    int method;
-    String prayerMethodName;
-    String daylight;
-    String timezone;
-    String mapImage;
-    String sealevel;
-    TodayWeather todayWeather;
-    String link;
-    String qiblaDirection;
-    String latitude;
-    String longitude;
-    String address;
-    String city;
-    String state;
-    String postalCode;
-    String country;
-    String countryCode;
-    List<Item> items;
-    int statusValid;
-    int statusCode;
-    String statusDescription;
-
     JadwalDaily({
-        this.title,
-        this.query,
-        this.jadwalDailyFor,
-        this.method,
-        this.prayerMethodName,
-        this.daylight,
-        this.timezone,
-        this.mapImage,
-        this.sealevel,
-        this.todayWeather,
-        this.link,
-        this.qiblaDirection,
-        this.latitude,
-        this.longitude,
-        this.address,
-        this.city,
-        this.state,
-        this.postalCode,
-        this.country,
-        this.countryCode,
-        this.items,
-        this.statusValid,
-        this.statusCode,
-        this.statusDescription,
+        this.code,
+        this.status,
+        this.results,
     });
+
+    int code;
+    String status;
+    Results results;
 
     factory JadwalDaily.fromJson(Map<String, dynamic> json) => JadwalDaily(
-        title: json["title"] == null ? null : json["title"],
-        query: json["query"] == null ? null : json["query"],
-        jadwalDailyFor: json["for"] == null ? null : json["for"],
-        method: json["method"] == null ? null : json["method"],
-        prayerMethodName: json["prayer_method_name"] == null ? null : json["prayer_method_name"],
-        daylight: json["daylight"] == null ? null : json["daylight"],
-        timezone: json["timezone"] == null ? null : json["timezone"],
-        mapImage: json["map_image"] == null ? null : json["map_image"],
-        sealevel: json["sealevel"] == null ? null : json["sealevel"],
-        todayWeather: json["today_weather"] == null ? null : TodayWeather.fromJson(json["today_weather"]),
-        link: json["link"] == null ? null : json["link"],
-        qiblaDirection: json["qibla_direction"] == null ? null : json["qibla_direction"],
-        latitude: json["latitude"] == null ? null : json["latitude"],
-        longitude: json["longitude"] == null ? null : json["longitude"],
-        address: json["address"] == null ? null : json["address"],
-        city: json["city"] == null ? null : json["city"],
-        state: json["state"] == null ? null : json["state"],
-        postalCode: json["postal_code"] == null ? null : json["postal_code"],
-        country: json["country"] == null ? null : json["country"],
-        countryCode: json["country_code"] == null ? null : json["country_code"],
-        items: json["items"] == null ? null : List<Item>.from(json["items"].map((x) => Item.fromJson(x))),
-        statusValid: json["status_valid"] == null ? null : json["status_valid"],
-        statusCode: json["status_code"] == null ? null : json["status_code"],
-        statusDescription: json["status_description"] == null ? null : json["status_description"],
+        code: json["code"] == null ? null : json["code"],
+        status: json["status"] == null ? null : json["status"],
+        results: json["results"] == null ? null : Results.fromJson(json["results"]),
     );
 
     Map<String, dynamic> toJson() => {
-        "title": title == null ? null : title,
-        "query": query == null ? null : query,
-        "for": jadwalDailyFor == null ? null : jadwalDailyFor,
-        "method": method == null ? null : method,
-        "prayer_method_name": prayerMethodName == null ? null : prayerMethodName,
-        "daylight": daylight == null ? null : daylight,
-        "timezone": timezone == null ? null : timezone,
-        "map_image": mapImage == null ? null : mapImage,
-        "sealevel": sealevel == null ? null : sealevel,
-        "today_weather": todayWeather == null ? null : todayWeather.toJson(),
-        "link": link == null ? null : link,
-        "qibla_direction": qiblaDirection == null ? null : qiblaDirection,
-        "latitude": latitude == null ? null : latitude,
-        "longitude": longitude == null ? null : longitude,
-        "address": address == null ? null : address,
-        "city": city == null ? null : city,
-        "state": state == null ? null : state,
-        "postal_code": postalCode == null ? null : postalCode,
-        "country": country == null ? null : country,
-        "country_code": countryCode == null ? null : countryCode,
-        "items": items == null ? null : List<dynamic>.from(items.map((x) => x.toJson())),
-        "status_valid": statusValid == null ? null : statusValid,
-        "status_code": statusCode == null ? null : statusCode,
-        "status_description": statusDescription == null ? null : statusDescription,
+        "code": code == null ? null : code,
+        "status": status == null ? null : status,
+        "results": results == null ? null : results.toJson(),
     };
 }
 
-class Item {
-    String dateFor;
-    String fajr;
-    String shurooq;
-    String dhuhr;
-    String asr;
-    String maghrib;
-    String isha;
+class Results {
+    Results({
+        this.datetime,
+        this.location,
+        this.settings,
+    });
 
-    Item({
-        this.dateFor,
+    List<Datetime> datetime;
+    Location location;
+    Settings settings;
+
+    factory Results.fromJson(Map<String, dynamic> json) => Results(
+        datetime: json["datetime"] == null ? null : List<Datetime>.from(json["datetime"].map((x) => Datetime.fromJson(x))),
+        location: json["location"] == null ? null : Location.fromJson(json["location"]),
+        settings: json["settings"] == null ? null : Settings.fromJson(json["settings"]),
+    );
+
+    Map<String, dynamic> toJson() => {
+        "datetime": datetime == null ? null : List<dynamic>.from(datetime.map((x) => x.toJson())),
+        "location": location == null ? null : location.toJson(),
+        "settings": settings == null ? null : settings.toJson(),
+    };
+}
+
+class Datetime {
+    Datetime({
+        this.times,
+        this.date,
+    });
+
+    Times times;
+    Date date;
+
+    factory Datetime.fromJson(Map<String, dynamic> json) => Datetime(
+        times: json["times"] == null ? null : Times.fromJson(json["times"]),
+        date: json["date"] == null ? null : Date.fromJson(json["date"]),
+    );
+
+    Map<String, dynamic> toJson() => {
+        "times": times == null ? null : times.toJson(),
+        "date": date == null ? null : date.toJson(),
+    };
+}
+
+class Date {
+    Date({
+        this.timestamp,
+        this.gregorian,
+        this.hijri,
+    });
+
+    int timestamp;
+    DateTime gregorian;
+    DateTime hijri;
+
+    factory Date.fromJson(Map<String, dynamic> json) => Date(
+        timestamp: json["timestamp"] == null ? null : json["timestamp"],
+        gregorian: json["gregorian"] == null ? null : DateTime.parse(json["gregorian"]),
+        hijri: json["hijri"] == null ? null : DateTime.parse(json["hijri"]),
+    );
+
+    Map<String, dynamic> toJson() => {
+        "timestamp": timestamp == null ? null : timestamp,
+        "gregorian": gregorian == null ? null : "${gregorian.year.toString().padLeft(4, '0')}-${gregorian.month.toString().padLeft(2, '0')}-${gregorian.day.toString().padLeft(2, '0')}",
+        "hijri": hijri == null ? null : "${hijri.year.toString().padLeft(4, '0')}-${hijri.month.toString().padLeft(2, '0')}-${hijri.day.toString().padLeft(2, '0')}",
+    };
+}
+
+class Times {
+    Times({
+        this.imsak,
+        this.sunrise,
         this.fajr,
-        this.shurooq,
         this.dhuhr,
         this.asr,
+        this.sunset,
         this.maghrib,
         this.isha,
+        this.midnight,
     });
 
-    factory Item.fromJson(Map<String, dynamic> json) => Item(
-        dateFor: json["date_for"] == null ? null : json["date_for"],
-        fajr: json["fajr"] == null ? null : json["fajr"],
-        shurooq: json["shurooq"] == null ? null : json["shurooq"],
-        dhuhr: json["dhuhr"] == null ? null : json["dhuhr"],
-        asr: json["asr"] == null ? null : json["asr"],
-        maghrib: json["maghrib"] == null ? null : json["maghrib"],
-        isha: json["isha"] == null ? null : json["isha"],
+    String imsak;
+    String sunrise;
+    String fajr;
+    String dhuhr;
+    String asr;
+    String sunset;
+    String maghrib;
+    String isha;
+    String midnight;
+
+    factory Times.fromJson(Map<String, dynamic> json) => Times(
+        imsak: json["Imsak"] == null ? null : json["Imsak"],
+        sunrise: json["Sunrise"] == null ? null : json["Sunrise"],
+        fajr: json["Fajr"] == null ? null : json["Fajr"],
+        dhuhr: json["Dhuhr"] == null ? null : json["Dhuhr"],
+        asr: json["Asr"] == null ? null : json["Asr"],
+        sunset: json["Sunset"] == null ? null : json["Sunset"],
+        maghrib: json["Maghrib"] == null ? null : json["Maghrib"],
+        isha: json["Isha"] == null ? null : json["Isha"],
+        midnight: json["Midnight"] == null ? null : json["Midnight"],
     );
 
     Map<String, dynamic> toJson() => {
-        "date_for": dateFor == null ? null : dateFor,
-        "fajr": fajr == null ? null : fajr,
-        "shurooq": shurooq == null ? null : shurooq,
-        "dhuhr": dhuhr == null ? null : dhuhr,
-        "asr": asr == null ? null : asr,
-        "maghrib": maghrib == null ? null : maghrib,
-        "isha": isha == null ? null : isha,
+        "Imsak": imsak == null ? null : imsak,
+        "Sunrise": sunrise == null ? null : sunrise,
+        "Fajr": fajr == null ? null : fajr,
+        "Dhuhr": dhuhr == null ? null : dhuhr,
+        "Asr": asr == null ? null : asr,
+        "Sunset": sunset == null ? null : sunset,
+        "Maghrib": maghrib == null ? null : maghrib,
+        "Isha": isha == null ? null : isha,
+        "Midnight": midnight == null ? null : midnight,
     };
 }
 
-class TodayWeather {
-    String pressure;
-    String temperature;
-
-    TodayWeather({
-        this.pressure,
-        this.temperature,
+class Location {
+    Location({
+        this.latitude,
+        this.longitude,
+        this.elevation,
+        this.city,
+        this.country,
+        this.countryCode,
+        this.timezone,
+        this.localOffset,
     });
 
-    factory TodayWeather.fromJson(Map<String, dynamic> json) => TodayWeather(
-        pressure: json["pressure"] == null ? null : json["pressure"],
-        temperature: json["temperature"] == null ? null : json["temperature"],
+    double latitude;
+    double longitude;
+    double elevation;
+    String city;
+    String country;
+    String countryCode;
+    String timezone;
+    double localOffset;
+
+    factory Location.fromJson(Map<String, dynamic> json) => Location(
+        latitude: json["latitude"] == null ? null : json["latitude"].toDouble(),
+        longitude: json["longitude"] == null ? null : json["longitude"].toDouble(),
+        elevation: json["elevation"] == null ? null : json["elevation"],
+        city: json["city"] == null ? null : json["city"],
+        country: json["country"] == null ? null : json["country"],
+        countryCode: json["country_code"] == null ? null : json["country_code"],
+        timezone: json["timezone"] == null ? null : json["timezone"],
+        localOffset: json["local_offset"] == null ? null : json["local_offset"],
     );
 
     Map<String, dynamic> toJson() => {
-        "pressure": pressure == null ? null : pressure,
-        "temperature": temperature == null ? null : temperature,
+        "latitude": latitude == null ? null : latitude,
+        "longitude": longitude == null ? null : longitude,
+        "elevation": elevation == null ? null : elevation,
+        "city": city == null ? null : city,
+        "country": country == null ? null : country,
+        "country_code": countryCode == null ? null : countryCode,
+        "timezone": timezone == null ? null : timezone,
+        "local_offset": localOffset == null ? null : localOffset,
+    };
+}
+
+class Settings {
+    Settings({
+        this.timeformat,
+        this.school,
+        this.juristic,
+        this.highlat,
+        this.fajrAngle,
+        this.ishaAngle,
+    });
+
+    String timeformat;
+    String school;
+    String juristic;
+    String highlat;
+    double fajrAngle;
+    double ishaAngle;
+
+    factory Settings.fromJson(Map<String, dynamic> json) => Settings(
+        timeformat: json["timeformat"] == null ? null : json["timeformat"],
+        school: json["school"] == null ? null : json["school"],
+        juristic: json["juristic"] == null ? null : json["juristic"],
+        highlat: json["highlat"] == null ? null : json["highlat"],
+        fajrAngle: json["fajr_angle"] == null ? null : json["fajr_angle"],
+        ishaAngle: json["isha_angle"] == null ? null : json["isha_angle"],
+    );
+
+    Map<String, dynamic> toJson() => {
+        "timeformat": timeformat == null ? null : timeformat,
+        "school": school == null ? null : school,
+        "juristic": juristic == null ? null : juristic,
+        "highlat": highlat == null ? null : highlat,
+        "fajr_angle": fajrAngle == null ? null : fajrAngle,
+        "isha_angle": ishaAngle == null ? null : ishaAngle,
     };
 }
