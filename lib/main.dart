@@ -6,13 +6,19 @@ import 'package:alqurani/ui/compass.dart';
 import 'package:alqurani/ui/home.dart';
 import 'package:alqurani/ui/settings.dart';
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
 
-void main() => runApp(MultiProvider(providers: [
-      ChangeNotifierProvider(create: (_) => UiState()),
-      ChangeNotifierProvider(create: (_) => ThemeNotifier()),
-      ChangeNotifierProvider(create: (_) => LocationNotifier()),
-    ], child: MyApp()));
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  // Initialize without device test ids.
+  MobileAds.instance.initialize();
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(create: (_) => UiState()),
+    ChangeNotifierProvider(create: (_) => ThemeNotifier()),
+    ChangeNotifierProvider(create: (_) => LocationNotifier()),
+  ], child: MyApp()));
+}
 
 class MyApp extends StatelessWidget {
   @override

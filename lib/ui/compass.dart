@@ -11,7 +11,7 @@ class Compass extends StatefulWidget {
 
 class _CompassState extends State<Compass> {
   bool _hasPermissions = false;
-  double _lastRead = 0;
+  CompassEvent _lastRead;
   DateTime _lastReadAt;
 
   @override
@@ -55,10 +55,10 @@ class _CompassState extends State<Compass> {
       padding: const EdgeInsets.all(16.0),
       child: Row(
         children: <Widget>[
-          OutlineButton(
+          OutlinedButton(
             child: Text('Lihat koordinat'),
             onPressed: () async {
-              final double tmp = await FlutterCompass.events.first;
+              final CompassEvent tmp = await FlutterCompass.events.first;
               setState(() {
                 _lastRead = tmp;
                 _lastReadAt = DateTime.now();
@@ -86,7 +86,7 @@ class _CompassState extends State<Compass> {
   }
 
   Widget _buildCompass() {
-    return StreamBuilder<double>(
+    return StreamBuilder<CompassEvent>(
       stream: FlutterCompass.events,
       builder: (context, snapshot) {
         if (snapshot.hasError) {
@@ -103,7 +103,7 @@ class _CompassState extends State<Compass> {
           );
         }
 
-        double direction = snapshot.data;
+        double direction = snapshot.data.heading;
 
         return Container(
           alignment: Alignment.center,
@@ -127,7 +127,7 @@ class _CompassState extends State<Compass> {
           Spacer(),
           SizedBox(
             width: double.infinity,
-            child: OutlineButton(
+            child: OutlinedButton(
               child: Text('Request Permissions'),
               onPressed: () async {
                 await Permission.locationWhenInUse

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 
 class LocationNotifier with ChangeNotifier {
@@ -6,11 +7,11 @@ class LocationNotifier with ChangeNotifier {
 
   void locationNow() async {
     List<Placemark> placemark;
-    Position position = await Geolocator()
-        .getCurrentPosition(desiredAccuracy: LocationAccuracy.best);
+    Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.best);
     if (position != null)
-      placemark = await Geolocator()
-          .placemarkFromCoordinates(position.latitude, position.longitude);
+      placemark =
+          await placemarkFromCoordinates(position.latitude, position.longitude);
     locations = placemark[0].subAdministrativeArea;
   }
 
