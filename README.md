@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/hifiaz/Qurani/master/images/Icon.png" width="250">
+<img src="https://raw.githubusercontent.com/hifiaz/Qurani/master/assets/images/Icon.png" width="250">
 
 # Alqurani
 
