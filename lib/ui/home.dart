@@ -1,4 +1,3 @@
-import 'package:alqurani/data/utils/constan.dart';
 import 'package:alqurani/data/utils/data.dart';
 import 'package:alqurani/data/utils/style.dart';
 import 'package:alqurani/ui/about.dart';
@@ -7,6 +6,7 @@ import 'package:alqurani/ui/listpage/listalquran.dart';
 import 'package:alqurani/ui/listpage/listasmaul.dart';
 import 'package:alqurani/ui/listpage/listdoa.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class Home extends StatefulWidget {
@@ -15,7 +15,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
-  TabController _tabController;
+  TabController? _tabController;
 
   @override
   void initState() {
@@ -144,7 +144,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   }
 
   final BannerAd myBanner = BannerAd(
-    adUnitId: bannerId,
+    adUnitId: dotenv.env['BANNERID']!,
     size: AdSize.banner,
     request: AdRequest(),
     listener: BannerAdListener(),
@@ -153,7 +153,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
 
 class Drawers extends StatelessWidget {
   const Drawers({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

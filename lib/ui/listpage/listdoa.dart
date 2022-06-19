@@ -3,8 +3,8 @@ import 'package:alqurani/data/services.dart';
 import 'package:alqurani/data/uistate.dart';
 import 'package:alqurani/ui/widget/carddoa.dart';
 import 'package:flutter/material.dart';
-import 'package:pk_skeleton/pk_skeleton.dart';
 import 'package:provider/provider.dart';
+import 'package:skeletons/skeletons.dart';
 
 class ListDoa extends StatefulWidget {
   @override
@@ -21,7 +21,7 @@ class _ListDoaState extends State<ListDoa> {
         builder: (c, snapshot) {
           return snapshot.hasData
               ? ListView(
-                  children: snapshot.data
+                  children: snapshot.data!
                       .map((du) => CardDoa(
                             title: du.title,
                             arabic: du.arabic,
@@ -31,9 +31,7 @@ class _ListDoaState extends State<ListDoa> {
                           ))
                       .toList(),
                 )
-              : PKCardPageSkeleton(
-                  totalLines: 5,
-                );
+              : SkeletonListView();
         },
       ),
     );

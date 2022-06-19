@@ -43,6 +43,13 @@ class _SettingsState extends State<Settings> {
               ),
             ),
             CardSetting(
+              title: 'Mode Baca',
+              leading: Switch(
+                value: ui.mode,
+                onChanged: (newValue) => ui.mode = newValue,
+              ),
+            ),
+            CardSetting(
               title: 'Terjemahan',
               leading: Switch(
                 value: ui.terjemahan,
@@ -81,10 +88,10 @@ class _SettingsState extends State<Settings> {
 
 class CardSlider extends StatelessWidget {
   const CardSlider({
-    Key key,
-    @required this.title,
-    @required this.slider,
-    @required this.trailing,
+    Key? key,
+    required this.title,
+    required this.slider,
+    required this.trailing,
   }) : super(key: key);
 
   final String title;

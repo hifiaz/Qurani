@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class CardAsmaul extends StatelessWidget {
   const CardAsmaul({
-    Key key,
-    @required this.title,
-    @required this.arabic,
-    @required this.translate,
+    Key? key,
+    required this.title,
+    required this.arabic,
+    required this.translate,
   }) : super(key: key);
   final String title;
   final String arabic;

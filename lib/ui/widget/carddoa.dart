@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class CardDoa extends StatelessWidget {
   const CardDoa({
-    Key key,
-    @required this.title,
-    @required this.arabic,
-    @required this.fontarabic,
-    @required this.terjemahan,
-    @required this.translate,
+    Key? key,
+    required this.title,
+    required this.arabic,
+    required this.fontarabic,
+    required this.terjemahan,
+    required this.translate,
   }) : super(key: key);
 
   final String title;

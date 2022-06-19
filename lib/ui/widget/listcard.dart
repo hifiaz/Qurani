@@ -2,7 +2,7 @@ import 'package:alqurani/data/utils/style.dart';
 import 'package:flutter/material.dart';
 
 class ListCard extends StatelessWidget {
-  ListCard({this.title, this.ontap});
+  ListCard({required this.title, required this.ontap});
   final String title;
   final VoidCallback ontap;
   @override

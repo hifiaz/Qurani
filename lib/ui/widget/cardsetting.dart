@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class CardSetting extends StatelessWidget {
   const CardSetting({
-    Key key,
-    @required this.title,
-    @required this.leading,
+    Key? key,
+    required this.title,
+    required this.leading,
   }) : super(key: key);
 
   final String title;

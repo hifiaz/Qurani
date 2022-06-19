@@ -11,8 +11,8 @@ class Compass extends StatefulWidget {
 
 class _CompassState extends State<Compass> {
   bool _hasPermissions = false;
-  CompassEvent _lastRead;
-  DateTime _lastReadAt;
+  CompassEvent? _lastRead;
+  DateTime? _lastReadAt;
 
   @override
   void initState() {
@@ -58,7 +58,7 @@ class _CompassState extends State<Compass> {
           OutlinedButton(
             child: Text('Lihat koordinat'),
             onPressed: () async {
-              final CompassEvent tmp = await FlutterCompass.events.first;
+              final CompassEvent tmp = await FlutterCompass.events!.first;
               setState(() {
                 _lastRead = tmp;
                 _lastReadAt = DateTime.now();
@@ -103,13 +103,13 @@ class _CompassState extends State<Compass> {
           );
         }
 
-        double direction = snapshot.data.heading;
+        double? direction = snapshot.data?.heading;
 
         return Container(
           alignment: Alignment.center,
           child: Transform.rotate(
             angle: ((direction ?? 0) * (math.pi / 180) * -1),
-            child: Image.asset('images/compass.png'),
+            child: Image.asset('assets/images/compass.png'),
           ),
         );
       },

@@ -5,6 +5,7 @@ class UiState with ChangeNotifier {
   static double textsize = 0.4;
   static bool translate = false;
   static bool makna = false;
+  static bool modeBaca = true;
 
   set fontSize(newValue) {
     ayahsize = newValue;
@@ -32,5 +33,11 @@ class UiState with ChangeNotifier {
     notifyListeners();
   }
   bool get tafsir => makna;
+
+  set mode(newValue){
+    modeBaca = newValue;
+    notifyListeners();
+  }
+  bool get mode => modeBaca;
 
 }

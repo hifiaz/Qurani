@@ -3,8 +3,8 @@ import 'package:alqurani/data/services.dart';
 import 'package:alqurani/data/uistate.dart';
 import 'package:alqurani/data/utils/style.dart';
 import 'package:flutter/material.dart';
-import 'package:pk_skeleton/pk_skeleton.dart';
 import 'package:provider/provider.dart';
+import 'package:skeletons/skeletons.dart';
 
 class AyatKursi extends StatefulWidget {
   @override
@@ -31,13 +31,13 @@ class _AyatKursiState extends State<AyatKursi> {
                       child: Column(
                         children: <Widget>[
                           Text(
-                            snapshot.data.arabic,
+                            snapshot.data!.arabic,
                             textAlign: TextAlign.end,
                             style:
                                 TextStyle(height: 1.5, fontSize: ui.fontSize),
                           ),
                           AppStyle.spaceH10,
-                          if (ui.terjemahan) Text(snapshot.data.translation),
+                          if (ui.terjemahan) Text(snapshot.data!.translation),
                           if (ui.tafsir)
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,7 +48,7 @@ class _AyatKursiState extends State<AyatKursi> {
                                   style: AppStyle.end2subtitle,
                                 ),
                                 AppStyle.spaceH10,
-                                Text(snapshot.data.tafsir),
+                                Text(snapshot.data!.tafsir),
                               ],
                             ),
                         ],
@@ -59,9 +59,7 @@ class _AyatKursiState extends State<AyatKursi> {
               ),
             );
           }
-          return PKCardPageSkeleton(
-            totalLines: 1,
-          );
+          return SkeletonListView();
         });
   }
 }

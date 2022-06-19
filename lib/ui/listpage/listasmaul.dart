@@ -2,7 +2,7 @@ import 'package:alqurani/data/models/allasmaul.dart';
 import 'package:alqurani/data/services.dart';
 import 'package:alqurani/ui/widget/cardasmaul.dart';
 import 'package:flutter/material.dart';
-import 'package:pk_skeleton/pk_skeleton.dart';
+import 'package:skeletons/skeletons.dart';
 
 class ListAsmaul extends StatefulWidget {
   @override
@@ -25,7 +25,7 @@ class _ListAsmaulState extends State<ListAsmaul> {
                     child: GridView(
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2),
-                      children: snapshot.data
+                      children: snapshot.data!
                           .map((asm) => new CardAsmaul(
                                 arabic: asm.arabic,
                                 title: asm.latin,
@@ -33,9 +33,7 @@ class _ListAsmaulState extends State<ListAsmaul> {
                               ))
                           .toList(),
                     ))
-                : PKCardPageSkeleton(
-                    totalLines: 5,
-                  );
+                : SkeletonListView();
           },
         ),
       ),

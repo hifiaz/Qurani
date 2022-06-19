@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 
 class CardSurah extends StatelessWidget {
   CardSurah(
-      {this.title,
-      this.subtitle,
-      this.surah,
-      this.ayah,
-      this.arabic,
-      this.onTap});
+      {required this.title,
+      required this.subtitle,
+      required this.surah,
+      required this.ayah,
+      required this.arabic,
+      required this.onTap});
   final String title, subtitle, surah, ayah, arabic;
   final VoidCallback onTap;
   @override

@@ -9,9 +9,8 @@ class LocationNotifier with ChangeNotifier {
     List<Placemark> placemark;
     Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.best);
-    if (position != null)
-      placemark =
-          await placemarkFromCoordinates(position.latitude, position.longitude);
+    placemark =
+        await placemarkFromCoordinates(position.latitude, position.longitude);
     locations = placemark[0].subAdministrativeArea;
   }
 

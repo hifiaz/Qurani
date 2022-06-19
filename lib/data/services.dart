@@ -8,10 +8,10 @@ import 'package:alqurani/data/models/surahinfo.dart';
 import 'package:flutter/services.dart';
 
 class ServiceData {
-  var infosurah = 'surah/surah-info.json';
-  var listdoa = 'surah/doa-harian.json';
-  var listasmaulhusna = 'surah/asmaul-husna.json';
-  var ayatkursi = 'surah/ayat-kursi.json';
+  var infosurah = 'assets/surah/surah-info.json';
+  var listdoa = 'assets/surah/doa-harian.json';
+  var listasmaulhusna = 'assets/surah/asmaul-husna.json';
+  var ayatkursi = 'assets/surah/ayat-kursi.json';
 
   Future<List<SurahInfo>> loadInfo() async {
     var response = await rootBundle.loadString(infosurah);
@@ -20,7 +20,7 @@ class ServiceData {
   }
 
   Future<AllSurah> loadSurah(int number) async {
-    final response = await rootBundle.loadString('surah/$number.json');
+    final response = await rootBundle.loadString('assets/surah/$number.json');
     var res = json.decode(response);
     var data = res['$number'];
     return AllSurah.fromJson(data);

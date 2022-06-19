@@ -6,10 +6,12 @@ class ThemeNotifier with ChangeNotifier {
   static bool _darkmode = false;
   static List<ThemeData> themes = [
     ThemeData(
+        fontFamily: 'lpmq',
         brightness: Brightness.light,
         primarySwatch: Colors.green,
         scaffoldBackgroundColor: Color(0xffeaf0fe)),
     ThemeData(
+      fontFamily: 'lpmq',
       brightness: Brightness.dark,
       primarySwatch: Colors.green,
       canvasColor: Colors.black,
